@@ -3,7 +3,7 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #SingleInstance, force
-
+SetTitleMatchMode, 2
 
 #f::ShowStart("Mozilla Firefox", "C:\Program Files\Mozilla Firefox\firefox.exe")
 return
@@ -16,6 +16,8 @@ return
 
 #s::ShowStart("Lautstärkemixer", "sndvol")
 return
+
+#w::ShowStart("- LibreOffice Writer", "C:\Program Files\LibreOffice\program\swriter.exe")
 
 #^Enter::
 return
@@ -31,6 +33,7 @@ ShowStart(title, exe, toggle = 0)
             else
             {
                 Run, %exe%
+				WinWait, %title%
                 WinActivate
             }
         }
